@@ -47,7 +47,6 @@ def register(request):
 
     if request.method == 'POST':
 
-
         name = request.POST.get('inputName')
         split_name = name.split(' ')
         first_name = split_name[0]

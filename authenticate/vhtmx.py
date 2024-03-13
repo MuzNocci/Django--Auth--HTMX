@@ -67,6 +67,7 @@ def clean_pass(request):
     else:
         error = 'The email cannot be empty.'
 
+
     context = {
         'error' : error,
     }
@@ -86,6 +87,7 @@ def confirm_pass(request):
             error = 'The password and confirmation are not the same.'
     else:
         error = 'Repeat the password.'
+
 
     context = {
         'error' : error,

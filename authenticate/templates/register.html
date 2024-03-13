@@ -37,13 +37,27 @@
       </div>
 
       <div class="form-label-group">
-        <input type="password" name="inputPassword"  id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="inputPassword"  id="inputPassword" value="{{ data.inputPassword }}" class="form-control" placeholder="Password" hx-post="{% url 'clean_pass' %}" hx-trigger="keyup delay:200ms" hx-target="#info_pass" required>
         <label for="inputPassword">Password</label>
+        <div id="info_pass">
+          {% if error.pass %}
+          <div class="mt-2 alert alert-danger">
+            <p class="mb-0">{{ error.pass }}</p>
+          </div>
+          {% endif %}
+        </div>
       </div>
 
       <div class="form-label-group mb-4">
-        <input type="password" name="inputRepeatPassword" id="inputRepeatPassword" class="form-control" placeholder="Repeat Password" required>
+        <input type="password" name="inputRepeatPassword" id="inputRepeatPassword" class="form-control" placeholder="Repeat Password" hx-post="{% url 'confirm_pass' %}" hx-trigger="keyup delay:200ms" hx-target="#info_repass" required>
         <label for="inputRepeatPassword">Repeat Password</label>
+        <div id="info_repass">
+          {% if error.confirm_pass %}
+          <div class="mt-2 alert alert-danger">
+            <p class="mb-0">{{ error.confirm_pass }}</p>
+          </div>
+          {% endif %}
+        </div>
       </div>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>

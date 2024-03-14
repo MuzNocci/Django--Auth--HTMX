@@ -11,11 +11,10 @@ def clean_name(request):
     name = request.POST.get('inputName').replace(' ','')
 
     if name:
-        if len(name) > 2:
-            for i in range(len(name)):
-                if not name[i].isalpha():
-                    error = 'The name can only contain letters.'
-        else:
+        for i in range(len(name)):
+            if not name[i].isalpha():
+                error = 'The name can only contain letters.'
+        if len(name) <= 2 and error == '':
             error = 'The name must have more characters.'
     else:
         error = 'The name cannot be empty.'

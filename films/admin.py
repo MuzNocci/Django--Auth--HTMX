@@ -1,6 +1,30 @@
 from django.contrib import admin
-from films.models import Film
+from films.models import FilmReview
 
 
 
-admin.site.register(Film)
+@admin.register(FilmReview)
+class ReviewAdmin(admin.ModelAdmin):
+
+    list_display = [
+
+        'title',
+        'status',
+        'rating',
+        'created_at',
+
+    ]
+
+    list_filter = [
+
+        'status',
+        'author_id',
+        
+    ]
+
+    search_fields = [
+
+        'title',
+        'body',
+
+    ]
